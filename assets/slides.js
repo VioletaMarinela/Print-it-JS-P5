@@ -1,30 +1,18 @@
-const slides = document.querySelectorAll('.slideshow img');
-let currentSlide = 0;
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  const images = document.querySelectorAll('.slideshow img');
+    let currentImageIndex = 0;
 
-function showSlide(n) {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (n + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-}
+    function showImage(index) {
+        images.forEach(image => image.classList.remove('active'));
+    images[index].classList.add('active');
+  }
 
-function nextSlide() {
-    showSlide(currentSlide + 1);
-}
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+    showImage(currentImageIndex);
+  }
 
-function previousSlide() {
-    showSlide(currentSlide - 1);
-}
-
-setInterval(nextSlide, 2000); // Change l'image toutes les 2 secondes (2000 ms)
-
-// Vous pouvez également ajouter des événements pour les flèches gauche et droite
-const arrowLeft = document.querySelector(".slideshow img[src='./assets/images/arrow_left.png']");
-const arrowRight = document.querySelector(".slideshow img[src='./assets/images/arrow_right.png']");
-
-arrowLeft.addEventListener('click', () => {
-    previousSlide();
-});
-
-arrowRight.addEventListener('click', () => {
-    nextSlide();
+    // Automatically change the image every 3 seconds
+    setInterval(nextImage, 3000);
 });
