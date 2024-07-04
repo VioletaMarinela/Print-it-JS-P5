@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	];
 	let currentImageIndex = 0;
-
+	//////////
 	function showSlide(index) {
 		images.forEach(image => {
 			image.setAttribute('src', `assets/images/${slides[index].image}`);
