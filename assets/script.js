@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-	const images = document.querySelectorAll('.slideshow img');
+
 	const slides = [
 		{
 			"image": "slide1.jpg",
@@ -18,25 +18,53 @@ document.addEventListener("DOMContentLoaded", function () {
 			"tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
 		}
 	];
-	let currentImageIndex = 0;
-	//////////
-	function showSlide(index) {
-		images.forEach(image => {
-			image.setAttribute('src', `assets/images/${slides[index].image}`);
-			image.nextElementSibling.innerHTML = slides[index].tagLine;
-			image.classList.remove('active');
-		});
-		images[0].classList.add('active');
+
+	let index = 0;
+
+	function init() {
+		const arrowleft = document.querySelector("#arrowleft");
+		const arrowright = document.querySelector("#arrowright");
+
+		arrowleft.addEventListener("click", () => changevalueindex(-1))
+		arrowright.addEventListener("click", () => changevalueindex(1))
+
+		adddot();
+
 	}
 
-	function nextSlide() {
-		currentImageIndex = (currentImageIndex + 1) % slides.length;
-		showSlide(currentImageIndex);
+	init();
+
+	function changevalueindex(value) {
+		index += value;
+
+		if (index < 0) {
+			index = slides.length - 1;
+		}
+
+		if (index > slides.length - 1) {
+			index = 0;
+		}
+
+		updateslides(index);
 	}
 
-	// Initial loading of the first slide
-	showSlide(currentImageIndex);
+	function updateslides(index) {
+		const bannerimg = document.querySelector(".banner-img");
+		bannerimg.src = `./assets/images/slideshow/${slides[index].image}`
 
-	// Automatically change the slide every 3 seconds
-	setInterval(nextSlide, 3000);
-);
+		const slidertxt = document.querySelector(".slider-text");
+		slidertxt.innerHTML = slides[index].tagLine;
+	}
+
+	function adddot() {
+		const containerdots = document.querySelector("#dots");
+
+		for (let i = 0; i < slides.length; i++) {
+			let dotclass = i === 0 ? "dot dot_selected" : "dot";
+
+			containerdots.innerHTML += `<a class="${dotclass}" data-position="${i}"></a>`;
+		}
+	}
+
+
+});

@@ -181,6 +181,95 @@ header {
 	align-items: center;
 }
 
+.logo {
+	width: 260px;
+	margin-block: 10px;
+}
+
+.btn {
+	background-color: var(--primary-color);
+	padding: 16px 32px;
+	margin-inline: 5px;
+	border-radius: 5px;
+	color: white;
+	text-decoration: none;
+}
+
+.devis {
+	background-color: var(--secondary-color);
+}
+
+.arrows {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+	position: absolute;
+	height: 100%;
+	align-items: center;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+.arow {
+	cursor: pointer;
+}
+
+
+#banner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 470px;
+	position: relative;
+}
+
+.banner-img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	object-fit: cover;
+	object-position: center;
+}
+
+/* Code CSS en prévision de l'ajout d'un carousel pour la bannière */
+/* Gestion des fleches du carrousel */
+#banner .arrow {
+	position: absolute;
+}
+
+#banner .arrow_left {
+	left: 10px;
+}
+
+#banner .arrow_right {
+	right: 10px;
+}
+
+/* Gestion des points du carrousel */
+#dots {
+	position: absolute;
+	bottom: 40px;
+	display: flex;
+}
+
+.dot {
+	margin-inline: 5px;
+	width: 13px;
+	height: 13px;
+	background-color: #ffffff00;
+	border: 3px solid #fff;
+	border-radius: 100%;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+	;
+}
+
+.dot_selected {
+	background-color: #fff;
+}
 
 /* Fin du code CSS pour le carousel */
 #banner p {
@@ -191,24 +280,6 @@ header {
 	color: white;
 	text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 	text-align: center;
-}
-
-.slideshow {
-	position: relative;
-	max-width: 100%;
-	height: 400px;
-	overflow: hidden;
-}
-
-.slideshow img {
-	width: 100%;
-	height: 400px;
-	object-fit: cover;
-	display: none;
-}
-
-.slideshow img.active {
-	display: block;
 }
 
 #banner span {
