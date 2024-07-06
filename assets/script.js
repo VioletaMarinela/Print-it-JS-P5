@@ -28,7 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		arrowleft.addEventListener("click", () => changevalueindex(-1))
 		arrowright.addEventListener("click", () => changevalueindex(1))
 
-		adddot();
+		adddot("arrowleft", () => changevalueindex(-1))
+		adddot("arrowright", () => changevalueindex(1));
 
 	}
 
