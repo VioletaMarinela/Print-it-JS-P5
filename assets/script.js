@@ -28,9 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		arrowleft.addEventListener("click", () => changevalueindex(-1))
 		arrowright.addEventListener("click", () => changevalueindex(1))
 
-		adddot("arrowleft", () => changevalueindex(-1))
-		adddot("arrowright", () => changevalueindex(1));
-
+		adddot(index);
 	}
 
 	init();
@@ -47,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 
 		updateslides(index);
+		adddot(index);
 	}
 
 	function updateslides(index) {
@@ -57,15 +56,16 @@ document.addEventListener("DOMContentLoaded", function () {
 		slidertxt.innerHTML = slides[index].tagLine;
 	}
 
-	function adddot() {
+	function adddot(index) {
 		const containerdots = document.querySelector("#dots");
+		containerdots.innerHTML = "";
 
 		for (let i = 0; i < slides.length; i++) {
-			let dotclass = i === 0 ? "dot dot_selected" : "dot";
+			let dotclass = (i === index) ? "dot dot_selected" : "dot";
 
 			containerdots.innerHTML += `<a class="${dotclass}" data-position="${i}"></a>`;
 		}
+		console.log(adddot)
 	}
-
 
 });
