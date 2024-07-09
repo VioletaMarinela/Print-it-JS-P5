@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			containerdots.innerHTML += `<a class="${dotclass}" data-position="${i}"></a>`;
 		}
-		console.log(adddot)
+
 	}
 
 });
