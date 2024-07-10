@@ -20,14 +20,25 @@ document.addEventListener("DOMContentLoaded", function () {
 	];
 
 	let index = 0;
+	const dots = document.querySelectorAll(".dot");
 
 	function init() {
 		const arrowleft = document.querySelector("#arrowleft");
 		const arrowright = document.querySelector("#arrowright");
 
+
 		arrowleft.addEventListener("click", () => changevalueindex(-1))
 		arrowright.addEventListener("click", () => changevalueindex(1))
 
+		dots.forEach((dot, i) => {
+			dot.addEventListener("click", () => {
+				index = i;
+				updateslides();
+				adddot(index);
+			});
+		});
+
+		updateslides();
 		adddot(index);
 	}
 
@@ -44,11 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			index = 0;
 		}
 
-		updateslides(index);
+		updateslides();
 		adddot(index);
 	}
 
-	function updateslides(index) {
+	function updateslides() {
 		const bannerimg = document.querySelector(".banner-img");
 		bannerimg.src = `./assets/images/slideshow/${slides[index].image}`
 
@@ -56,16 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		slidertxt.innerHTML = slides[index].tagLine;
 	}
 
-	function adddot(index) {
-		const containerdots = document.querySelector("#dots");
-		containerdots.innerHTML = "";
-
-		for (let i = 0; i < slides.length; i++) {
-			let dotclass = (i === index) ? "dot dot_selected" : "dot";
-
-			containerdots.innerHTML += `<a class="${dotclass}" data-position="${i}"></a>`;
-		}
-
+	function adddot(selectedIndex) {
+		dots.forEach((dot, i) => {
+			dot.classList.toggle("dot_selected", i === selectedIndex);
+		});
 	}
-
 });
